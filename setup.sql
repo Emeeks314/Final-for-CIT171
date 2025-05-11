@@ -1,23 +1,21 @@
--- Create Students table
-CREATE TABLE Students (
-    student_id INT PRIMARY KEY,
-    first_name VARCHAR(50),
-    last_name VARCHAR(50)
+CREATE TABLE Customers (
+    CustomerID INT PRIMARY KEY,
+    Name VARCHAR(100),
+    Email VARCHAR(100)
 );
 
--- Create Courses table
-CREATE TABLE Courses (
-    course_id INT PRIMARY KEY,
-    course_name VARCHAR(100),
-    department VARCHAR(50)
+CREATE TABLE Books (
+    BookID INT PRIMARY KEY,
+    Title VARCHAR(100),
+    Author VARCHAR(100),
+    Price DECIMAL(8,2)
 );
 
--- Create Enrollments table (joins Students and Courses)
-CREATE TABLE Enrollments (
-    enrollment_id INT PRIMARY KEY,
-    student_id INT,
-    course_id INT,
-    semester VARCHAR(20),
-    FOREIGN KEY (student_id) REFERENCES Students(student_id),
-    FOREIGN KEY (course_id) REFERENCES Courses(course_id)
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY,
+    CustomerID INT,
+    BookID INT,
+    OrderDate DATE,
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID),
+    FOREIGN KEY (BookID) REFERENCES Books(BookID)
 );
